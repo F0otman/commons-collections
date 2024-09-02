@@ -605,7 +605,8 @@ public class MapUtilsTest {
         assertEquals("str", MapUtils.getString(in, "key"));
         assertNull(MapUtils.getString(null, "key"));
         assertEquals("default", MapUtils.getString(in, "noKey", "default"));
-        assertEquals("default", MapUtils.getString(in, "noKey", key -> {
+        assertEquals(null, MapUtils.getString(in, "noKey", null));
+        assertEquals("default", MapUtils.getString(in, "noKey", true, key -> {
             if ("noKey".equals(key)) {
                 return "default";
             }
